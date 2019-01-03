@@ -1,9 +1,15 @@
 import * as React from 'react';
 import '../App.css';
 
+import CharacterList from '../containers/CharacterList';
 class App extends React.Component {
   render() {
-    return <div className="App">Hello React!</div>;
+    return (
+      <>
+        <h1>The Force Awakens</h1>
+        <CharacterList />
+      </>
+    );
   }
 }
 
