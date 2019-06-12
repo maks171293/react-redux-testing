@@ -10,7 +10,7 @@ import { Store } from 'redux';
 
 // Import the store function and state
 import configureStore, { IAppState } from './store/Store';
-import { getAllCharacters } from './actions/CharacterActions';
+import { getAllRestaurants } from './actions/RestaurantActions';
 
 import './index.css';
 import App from './components/App';
@@ -29,7 +29,7 @@ const Root: React.SFC<IProps> = props => {
 
 // Generate the store
 const store = configureStore();
-store.dispatch(getAllCharacters());
+store.dispatch(getAllRestaurants("kiev"));
 
 // Render the App
 ReactDOM.render(<Root store={store} />, document.getElementById(

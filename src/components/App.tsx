@@ -1,13 +1,13 @@
 import * as React from 'react';
 import '../App.css';
 
-import CharacterList from '../containers/CharacterList';
+import RestaurantList from '../containers/RestaurantList';
 class App extends React.Component {
   render() {
     return (
       <>
         <h1>The Force Awakens</h1>
-        <CharacterList />
+        <RestaurantList />
       </>
     );
   }
