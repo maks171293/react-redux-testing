@@ -1,5 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@material-ui/styles';
+import AppBar from '@material-ui/core/AppBar';
+import theme from './theme';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 /* Make the store available to all container 
 components in the application without passing it explicitly */
@@ -22,7 +28,9 @@ interface IProps {
 const Root: React.SFC<IProps> = props => {
   return (
     <Provider store={props.store}>
-      <App />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
     </Provider>
   );
 };

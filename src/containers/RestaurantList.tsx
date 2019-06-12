@@ -16,7 +16,7 @@ class RestaurantList extends React.Component<IProps> {
     return (
       <div className="page-container">
         {restaurants.map((restaurant: IRestaurant) => {
-          return <span key={restaurant.name}>{restaurant.name}</span>;
+          return <span key={restaurant.id}>{restaurant.name}</span>;
         })}
       </div>
     );
