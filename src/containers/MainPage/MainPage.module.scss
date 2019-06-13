@@ -1,0 +1,8 @@
+@import "../../variables.scss";
+
+.MainPage_root {
+    display: flex;
+    flex-direction: row;
+    padding: 60px;
+    background-color: $secondary-color;
+}

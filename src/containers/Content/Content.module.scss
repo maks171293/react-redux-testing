@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.Content_root {
+  width: 25%;
+  background-color: $secondary-color;
+  height: 100%;
+  color: $text-color;
+  padding: 20px;
+  flex: 1;
+}

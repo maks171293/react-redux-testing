@@ -1,11 +1,32 @@
 import React, { Component } from 'react'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { createStyles, withStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Select from "@material-ui/core/Select";
 
-interface MyProps { };
+
+const styles = (theme: Theme) => createStyles({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+})
+
+interface MyProps { 
+  className: string, 
+  classes: {
+    formControl: string, 
+    root: string
+  } 
+};
 interface MyState { value: string };
 
 export class SelectSimple extends React.Component<MyProps, MyState> {
@@ -25,17 +46,16 @@ export class SelectSimple extends React.Component<MyProps, MyState> {
 
   render() {
     let { value } = this.state;
+    const {className, classes} = this.props;
     return (
-      <form autoComplete="off">
-        <FormControl >
-          <InputLabel htmlFor="age-simple">Age</InputLabel>
+      <form autoComplete="off" className={classes.root}>
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor="city-simple">City</InputLabel>
           <Select
             value={value}
             onChange={this.handleChange}
-            inputProps={{
-              name: "age",
-              id: "age-simple"
-            }}
+            className={className}
+            input={<OutlinedInput labelWidth={20} name="city" id="outlined-age-simple" />}
           >
             <MenuItem value="">
               <em>None</em>
@@ -50,4 +70,4 @@ export class SelectSimple extends React.Component<MyProps, MyState> {
   }
 }
 
-export default SelectSimple
+export default withStyles(styles)(SelectSimple)

@@ -16,7 +16,8 @@ export interface IRestaurant {
   price_level: number;
   opening_hours: {
     isOpen: boolean;
-  }
+  },
+  photos: any;
 }
 
 // Define the Restaurant State
@@ -34,7 +35,7 @@ export const restaurantReducer: Reducer<IRestaurantState, RestaurantActions> = (
   action
 ) => {
   switch (action.type) {
-    case RestaurantActionTypes.GET_ALL: {
+    case RestaurantActionTypes.GET_ALL_SUCCESS: {
       return {
         ...state,
         restaurants: action.restaurants,

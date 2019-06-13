@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { IAppState } from '../store/Store';
+import ListItem from '../components/ListItem';
 
+import { IAppState } from '../store/Store';
+import { getRestaurants } from '../services/selectors';
 import { IRestaurant } from '../reducers/restaurantReducer';
 
 // Create the containers interface
@@ -16,7 +18,7 @@ class RestaurantList extends React.Component<IProps> {
     return (
       <div className="page-container">
         {restaurants.map((restaurant: IRestaurant) => {
-          return <span key={restaurant.id}>{restaurant.name}</span>;
+          return <ListItem name={restaurant.name} address={restaurant.formatted_address}/>
         })}
       </div>
     );
@@ -26,7 +28,7 @@ class RestaurantList extends React.Component<IProps> {
 // Grab the restaurants from the store and make them available on props
 const mapStateToProps = (store: IAppState) => {
   return {
-    restaurants: store.restaurantState.restaurants,
+    restaurants: getRestaurants(store),
   };
 };
 
