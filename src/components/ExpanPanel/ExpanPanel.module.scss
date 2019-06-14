@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.ExpanPanel {
+    width: 100%;
+    border-bottom: 1px solid $text-color;
+    .wrapper {
+        background: $primary-color;
+        color: $text-color;
+    }
+}

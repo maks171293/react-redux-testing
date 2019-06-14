@@ -18,7 +18,7 @@ class RestaurantList extends React.Component<IProps> {
     return (
       <div className="page-container">
         {restaurants.map((restaurant: IRestaurant) => {
-          return <ListItem name={restaurant.name} address={restaurant.formatted_address}/>
+          return <ListItem name={restaurant.name} address={restaurant.formatted_address} icon={restaurant.icon}/>
         })}
       </div>
     );

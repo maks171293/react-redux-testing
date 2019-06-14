@@ -25,6 +25,7 @@ const styles = (theme: Theme) => createStyles({
       display: 'block',
       maxWidth: '100%',
       maxHeight: '100%',
+      objectFit: 'cover',
     },
   });
 
@@ -37,18 +38,20 @@ interface IProps {
   },
   name: string,
   address: string,
+  icon: string,
 }
 
 export class ListItem extends React.Component<IProps> {
   render(){
-    let { classes, name, address } = this.props;
+    let { classes, name, address, icon } = this.props;
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
           <Grid container spacing={2}>
             <Grid item>
               <ButtonBase className={classes.image}>
-                <img className={classes.img} alt="complex" src={'https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'} />
+                {/* <img className={classes.img} alt="complex" src={'https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'} /> */}
+                <img className={classes.img} alt="complex" src={icon} />
               </ButtonBase>
             </Grid>
             <Grid item xs={12} sm container>

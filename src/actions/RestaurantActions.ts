@@ -5,7 +5,7 @@ import axios from 'axios';
 import * as urls from '../services/constants';
 
 // Import Restaurant Typing
-import { IRestaurant, IRestaurantState } from '../reducers/restaurantReducer';
+import { IRestaurant, IRestaurantState, IFilters } from '../reducers/restaurantReducer';
 import { IAppState } from '../store/Store';
 
 // Create Action Constants
@@ -56,3 +56,13 @@ export const getAllRestaurants: ActionCreator<
     }
   };
 };
+
+export enum changeFiltersTypes {
+  CHANGE_FILTERS = 'CHANGE_FILTERS',
+}
+
+
+
+export const changeFilters = (filters: IFilters ) => {
+
+}

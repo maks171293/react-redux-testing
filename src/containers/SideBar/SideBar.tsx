@@ -3,6 +3,9 @@ import { connect } from 'react-redux'
 import { IAppState } from '../../store/Store';
 import { IRestaurant } from '../../reducers/restaurantReducer';
 import { getRestaurants } from '../../services/selectors';
+import ExpanPanel from '../../components/ExpanPanel';
+import TextInput from '../../components/TextInput';
+import CheckboxesGroup from '../../components/CheckboxesGroup';
 import styles from './SideBar.module.scss';
 
 interface IProps {
@@ -13,7 +16,15 @@ export class SideBar extends React.Component<IProps> {
   public render() {
     return (
       <div className={styles.SideBar}>
-        <p>lalalal</p>
+        <ExpanPanel title="Search By Name">
+          <TextInput />
+        </ExpanPanel>
+        <ExpanPanel title="Filter By Type">
+          <CheckboxesGroup />
+        </ExpanPanel>
+        <ExpanPanel title="Is Opened Now">
+          <p>lalala</p>
+        </ExpanPanel>
       </div>
     )
   }

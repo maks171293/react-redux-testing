@@ -1,0 +1,10 @@
+@import "../../variables.scss";
+
+.TextInput {
+    label {
+        color: $text-color;
+    }
+  input {
+    color: $text-color;
+  }
+}
