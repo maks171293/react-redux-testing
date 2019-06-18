@@ -13,6 +13,9 @@ interface IProps {
 }
 
 export class SideBar extends React.Component<IProps> {
+  onChangeCheckbox = (label: string, value: boolean) => {
+    console.log('sidebar changed checkbox', label, value);
+  }
   public render() {
     return (
       <div className={styles.SideBar}>
@@ -20,7 +23,7 @@ export class SideBar extends React.Component<IProps> {
           <TextInput />
         </ExpanPanel>
         <ExpanPanel title="Filter By Type">
-          <CheckboxesGroup />
+          <CheckboxesGroup onCheckboxChange={this.onChangeCheckbox} />
         </ExpanPanel>
         <ExpanPanel title="Is Opened Now">
           <p>lalala</p>

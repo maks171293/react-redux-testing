@@ -28,7 +28,22 @@ interface IProps {
   }
 }
 
+const cities = [
+  {
+    value: 'kiev', label: 'Kiev',
+  },
+  {
+    value: 'berlin', label: 'Berlin',
+  },
+  {
+    value: 'london', label: 'London',
+  }
+]
+
 export class Header extends Component<IProps> {
+  onSelectChange = (value: string) => {
+    console.log('value', value);
+  }
   render() {
     const {classes} = this.props
     return (
@@ -37,7 +52,7 @@ export class Header extends Component<IProps> {
           <Typography className={classes.title} variant="h6" color="inherit">
             Restaurants Reservation
           </Typography>
-          <SelectSimple className={classes.select} />
+          <SelectSimple className={classes.select} labels={cities} onSelectChange={this.onSelectChange} />
         </Toolbar>
       </AppBar>
     )

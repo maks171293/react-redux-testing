@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { createStyles, withStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from "@material-ui/core/InputLabel";
+import Input from '@material-ui/core/Input';
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Select from "@material-ui/core/Select";
 
 
@@ -25,7 +25,9 @@ interface MyProps {
   classes: {
     formControl: string, 
     root: string
-  } 
+  },
+  labels: { value: string, label: string }[],
+  onSelectChange: (value: string) => void,
 };
 interface MyState { value: string };
 
@@ -39,14 +41,17 @@ export class SelectSimple extends React.Component<MyProps, MyState> {
 
   handleChange = (e: React.ChangeEvent<{ value: any }>) => {
     const { value } = e.target;
+    const { onSelectChange } = this.props;
     this.setState({
       value
+    }, () => {
+      onSelectChange(value);
     })
   }
 
   render() {
     let { value } = this.state;
-    const {className, classes} = this.props;
+    const {className, classes, labels} = this.props;
     return (
       <form autoComplete="off" className={classes.root}>
         <FormControl className={classes.formControl}>
@@ -55,14 +60,11 @@ export class SelectSimple extends React.Component<MyProps, MyState> {
             value={value}
             onChange={this.handleChange}
             className={className}
-            input={<OutlinedInput labelWidth={20} name="city" id="outlined-age-simple" />}
+            input={<Input name="city" id="outlined-age-simple" />}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={'kiev'}>Kiev</MenuItem>
-            <MenuItem value={'london'}>London</MenuItem>
-            <MenuItem value={'berlin'}>Berlin</MenuItem>
+            {
+              labels.map(item=> <MenuItem value={item.value}>{item.label}</MenuItem>)
+            }
         </Select>
         </FormControl>
       </form>
