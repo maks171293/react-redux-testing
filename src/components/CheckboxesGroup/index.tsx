@@ -13,7 +13,7 @@ interface IState {
   restaurant: boolean;
   bar: boolean;
   cafe: boolean;
-  vagetarian: boolean;
+  vegetarian: boolean;
 }
 
 export class CheckboxesGroup extends Component<IProps, IState> {
@@ -23,7 +23,7 @@ export class CheckboxesGroup extends Component<IProps, IState> {
       restaurant: true,
       bar: true,
       cafe: true,
-      vagetarian: true,
+      vegetarian: true,
     }
   }
   handleChange = (e: any, checked: boolean): void => {
@@ -34,28 +34,29 @@ export class CheckboxesGroup extends Component<IProps, IState> {
     })
   }
   render() {
+    const { restaurant, bar, cafe, vegetarian } = this.state;
     return (
       <div>
         <FormControl>
           <FormLabel component="legend">Assign responsibility</FormLabel>
           <FormGroup>
             <FormControlLabel
-              control={<Checkbox checked={this.state.restaurant} name="restaurant" onChange={this.handleChange} />}
+              control={<Checkbox checked={restaurant} name="restaurant" onChange={this.handleChange} />}
               label="Restaurant"
               color="secondary"
             />
             <FormControlLabel
-              control={<Checkbox checked={this.state.bar} name="bar" onChange={this.handleChange} />}
+              control={<Checkbox checked={bar} name="bar" onChange={this.handleChange} />}
               label="Bar"
               color="secondary"
             />
             <FormControlLabel
-              control={<Checkbox checked={this.state.cafe} name="cafe" onChange={this.handleChange} />}
+              control={<Checkbox checked={cafe} name="cafe" onChange={this.handleChange} />}
               label="Cafe"
               color="secondary"
             />
             <FormControlLabel
-              control={<Checkbox checked={this.state.vagetarian} name="vagetarian" onChange={this.handleChange} />}
+              control={<Checkbox checked={vegetarian} name="vegetarian" onChange={this.handleChange} />}
               label="Vegetarian"
               color="secondary"
             />

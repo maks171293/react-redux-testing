@@ -4,31 +4,33 @@ import { connect } from 'react-redux';
 import ListItem from '../components/ListItem';
 
 import { IAppState } from '../store/Store';
-import { getRestaurants } from '../services/selectors';
+import { getRestaurants, getSearchString, getFilteredRestaurants } from '../services/selectors';
 import { IRestaurant } from '../reducers/restaurantReducer';
 
-// Create the containers interface
 interface IProps {
   restaurants: IRestaurant[];
+  searchString: string;
+  filteredRestaurants: IRestaurant[];
 }
 
 class RestaurantList extends React.Component<IProps> {
   public render() {
-    const { restaurants } = this.props;
+    const { filteredRestaurants } = this.props;
     return (
       <div className="page-container">
-        {restaurants.map((restaurant: IRestaurant) => {
-          return <ListItem name={restaurant.name} address={restaurant.formatted_address} icon={restaurant.icon}/>
+        {filteredRestaurants.map((restaurant: IRestaurant) => {
+          return <ListItem key={restaurant.name} name={restaurant.name} address={restaurant.formatted_address} icon={restaurant.icon} rating={restaurant.rating}/>
         })}
       </div>
     );
   }
 }
 
-// Grab the restaurants from the store and make them available on props
 const mapStateToProps = (store: IAppState) => {
   return {
     restaurants: getRestaurants(store),
+    searchString: getSearchString(store),
+    filteredRestaurants: getFilteredRestaurants(store),
   };
 };
 

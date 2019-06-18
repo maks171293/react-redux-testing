@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Rating from 'material-ui-rating';
 
 const styles = (theme: Theme) => createStyles({
     root: {
@@ -39,11 +40,12 @@ interface IProps {
   name: string,
   address: string,
   icon: string,
+  rating: number,
 }
 
 export class ListItem extends React.Component<IProps> {
   render(){
-    let { classes, name, address, icon } = this.props;
+    let { classes, name, address, icon, rating } = this.props;
     return (
       <div className={classes.root}>
         <Paper className={classes.paper}>
@@ -66,6 +68,11 @@ export class ListItem extends React.Component<IProps> {
                   <Typography variant="body2" >
                     {address}
                   </Typography>
+                  <Rating
+                    value={rating}
+                    max={5}
+                    readOnly
+                  />
                 </Grid>
                 <Grid item>
                   <Typography variant="body2" style={{ cursor: 'pointer' }}>

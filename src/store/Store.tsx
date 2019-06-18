@@ -13,16 +13,20 @@ import thunk from 'redux-thunk';
 import {
   restaurantReducer,
   IRestaurantState,
+  filtersReducer,
+  IFiltersState,
 } from '../reducers/restaurantReducer';
 
 // Create an interface for the application state
 export interface IAppState {
   restaurantState: IRestaurantState;
+  filtersState: IFiltersState;
 }
 
 // Create the root reducer
 const rootReducer = combineReducers<IAppState>({
   restaurantState: restaurantReducer,
+  filtersState: filtersReducer,
 });
 
 // Create a configure store function of type `IAppState`

@@ -18,7 +18,7 @@ export class ExpanPanel extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: true
     }
   }
   handleChange = (e: object, expanded: boolean): void => {

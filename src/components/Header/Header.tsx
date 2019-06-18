@@ -1,4 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { IAppState } from '../../store/Store';
+import { getRestaurants } from '../../services/selectors';
+import { getAllRestaurants as getAllRestaurantsAction } from '../../actions/RestaurantActions';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -25,7 +29,8 @@ interface IProps {
     root: string,
     title: string,
     select: string
-  }
+  };
+  getAllRestaurants: (value: string) => void;
 }
 
 const cities = [
@@ -42,7 +47,8 @@ const cities = [
 
 export class Header extends Component<IProps> {
   onSelectChange = (value: string) => {
-    console.log('value', value);
+    const { getAllRestaurants } = this.props;
+    getAllRestaurants(value)
   }
   render() {
     const {classes} = this.props
@@ -59,4 +65,12 @@ export class Header extends Component<IProps> {
   }
 }
 
-export default withStyles(styles)(Header)
+const mapStateToProps = (state: IAppState) => ({
+  restaurants: getRestaurants(state),
+})
+
+const mapDispatchToProps = {
+  getAllRestaurants: getAllRestaurantsAction,
+}
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Header))

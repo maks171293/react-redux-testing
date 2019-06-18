@@ -3,34 +3,18 @@ import TextField from '@material-ui/core/TextField';
 import styles from './TextInput.module.scss';
 
 interface IProps {
-
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	text: string;
 }
-
-interface IState {
-	string: string;
-}
-
-export class TextInput extends Component<IProps, IState> {
-	constructor(props: IProps) {
-		super(props);
-		this.state = {
-			string: ''
-		}
-	}
-	handleChange = (e: any): void => {
-		const {value} = e.target;
-		this.setState({
-			string: value,
-		})
-	}
+export class TextInput extends Component<IProps> {
 	render() {
-		const { string } = this.state
+		const { text, onChange } = this.props;
 		return (
 			<TextField
 				label="Search"
 				className={styles.TextInput}
-				value={string}
-				onChange={this.handleChange}
+				value={text}
+				onChange={onChange}
 				margin="normal"
 			/>
 		)

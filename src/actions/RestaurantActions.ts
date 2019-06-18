@@ -57,12 +57,59 @@ export const getAllRestaurants: ActionCreator<
   };
 };
 
-export enum changeFiltersTypes {
-  CHANGE_FILTERS = 'CHANGE_FILTERS',
+export enum FiltersActionTypes {
+  CHANGE_TYPE = 'CHANGE_TYPE',
+  TOGGLE_SHOW_ALL = 'SHOW_ALL',
+  TOGGLE_SHOW_OPENED = 'SHOW_OPENED',
+  CHANGE_SEARCH_STRING = 'SEARCH_STRING',
 }
 
-
-
-export const changeFilters = (filters: IFilters ) => {
-
+export const changeFilterTypes = (typeName: string) => (dispatch: Dispatch) => {
+  dispatch({
+    type: FiltersActionTypes.CHANGE_TYPE,
+    data: typeName,
+  })
 }
+
+export const toggleShowAll = (showAll: boolean) => (dispatch: Dispatch) => {
+  dispatch({
+    type: FiltersActionTypes.TOGGLE_SHOW_ALL,
+    data: showAll,
+  })
+}
+
+export const toggleShowOpened = (showOpened: boolean) => (dispatch: Dispatch) => {
+  dispatch({
+    type: FiltersActionTypes.TOGGLE_SHOW_OPENED,
+    data: showOpened,
+  })
+}
+
+export const changeSearchString = (searchString: string) => (dispatch: Dispatch) => {
+  dispatch({
+    type: FiltersActionTypes.CHANGE_SEARCH_STRING,
+    data: searchString,
+  })
+}
+
+export interface IFilterChangeTypesAction {
+  type: FiltersActionTypes.CHANGE_TYPE;
+  data: string;
+}
+
+export interface IFilterToggleShowAllAction {
+  type: FiltersActionTypes.TOGGLE_SHOW_ALL;
+  data: boolean;
+}
+
+export interface IFilterToggleShowOpenedAction {
+  type: FiltersActionTypes.TOGGLE_SHOW_OPENED;
+  data: boolean;
+}
+
+export interface IFilterChangeSearchStringAction {
+  type: FiltersActionTypes.CHANGE_SEARCH_STRING;
+  data: string;
+}
+
+export type FiltersActions = IFilterChangeTypesAction | IFilterToggleShowAllAction | IFilterChangeSearchStringAction | IFilterToggleShowOpenedAction;
