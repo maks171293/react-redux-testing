@@ -5,32 +5,31 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
-interface IProps {
-  onCheckboxChange: (label: string, value: boolean) => void
+interface ICheckboxesGroupProps {
+  onCheckboxChange: (label: string) => void
 }
 
-interface IState {
+interface ICheckboxesGroupState {
   restaurant: boolean;
   bar: boolean;
   cafe: boolean;
   vegetarian: boolean;
 }
 
-export class CheckboxesGroup extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
+export class CheckboxesGroup extends Component<ICheckboxesGroupProps, ICheckboxesGroupState> {
+  state = {
       restaurant: true,
       bar: true,
       cafe: true,
       vegetarian: true,
-    }
-  }
-  handleChange = (e: any, checked: boolean): void => {
+    };
+
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>, checked: boolean): void => {
     const { name } = e.target;
     const {onCheckboxChange} = this.props;
+    // WTF
     this.setState({ [name]: checked } as any, () => {
-      onCheckboxChange(name, checked);
+      onCheckboxChange(name);
     })
   }
   render() {
@@ -41,6 +40,7 @@ export class CheckboxesGroup extends Component<IProps, IState> {
           <FormLabel component="legend">Assign responsibility</FormLabel>
           <FormGroup>
             <FormControlLabel
+            // don't hardcode names, labels, etc.
               control={<Checkbox checked={restaurant} name="restaurant" onChange={this.handleChange} />}
               label="Restaurant"
               color="secondary"

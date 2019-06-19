@@ -1,8 +1,7 @@
 import * as React from 'react';
 import '../App.scss';
-import Header from './Header/Header';
+import Header from '../containers/Header/Header';
 
-import RestaurantList from '../containers/RestaurantList';
 import MainPage from '../containers/MainPage/MainPage';
 
 class App extends React.Component {

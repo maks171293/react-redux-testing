@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ListItem from '../components/ListItem';
 
-import { IAppState } from '../store/Store';
+import { IAppState } from '../store/rootReducer';
 import { getRestaurants, getSearchString, getFilteredRestaurants } from '../services/selectors';
 import { IRestaurant } from '../reducers/restaurantReducer';
 
@@ -13,6 +13,7 @@ interface IProps {
   filteredRestaurants: IRestaurant[];
 }
 
+// use functional component
 class RestaurantList extends React.Component<IProps> {
   public render() {
     const { filteredRestaurants } = this.props;

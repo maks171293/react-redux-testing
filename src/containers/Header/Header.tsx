@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { IAppState } from '../../store/Store';
+import { IAppState } from '../../store/rootReducer';
 import { getRestaurants } from '../../services/selectors';
 import { getAllRestaurants as getAllRestaurantsAction } from '../../actions/RestaurantActions';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
-import SelectSimple from '../SelectSimple';
+import SelectSimple from '../../components/SelectSimple';
 
 const styles = (theme: Theme) => createStyles({
   root: {

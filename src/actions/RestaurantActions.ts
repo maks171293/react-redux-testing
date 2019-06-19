@@ -5,8 +5,9 @@ import axios from 'axios';
 import * as urls from '../services/constants';
 
 // Import Restaurant Typing
-import { IRestaurant, IRestaurantState, IFilters } from '../reducers/restaurantReducer';
-import { IAppState } from '../store/Store';
+import { IRestaurant, IRestaurantState } from '../reducers/restaurantReducer';
+import { IFilters, IFiltersState } from '../reducers/filtersReducer';
+import { IAppState } from '../store/rootReducer';
 
 // Create Action Constants
 export enum RestaurantActionTypes {
@@ -59,52 +60,33 @@ export const getAllRestaurants: ActionCreator<
 
 export enum FiltersActionTypes {
   CHANGE_TYPE = 'CHANGE_TYPE',
-  TOGGLE_SHOW_ALL = 'SHOW_ALL',
-  TOGGLE_SHOW_OPENED = 'SHOW_OPENED',
+  CHANGE_TIME_FILTER = 'CHANGE_TIME_FILTER',
   CHANGE_SEARCH_STRING = 'SEARCH_STRING',
 }
 
-export const changeFilterTypes = (typeName: string) => (dispatch: Dispatch) => {
-  dispatch({
+export const changeFilterTypes = (typeName: string) =>({
     type: FiltersActionTypes.CHANGE_TYPE,
     data: typeName,
   })
-}
 
-export const toggleShowAll = (showAll: boolean) => (dispatch: Dispatch) => {
-  dispatch({
-    type: FiltersActionTypes.TOGGLE_SHOW_ALL,
-    data: showAll,
-  })
-}
-
-export const toggleShowOpened = (showOpened: boolean) => (dispatch: Dispatch) => {
-  dispatch({
-    type: FiltersActionTypes.TOGGLE_SHOW_OPENED,
-    data: showOpened,
-  })
-}
-
-export const changeSearchString = (searchString: string) => (dispatch: Dispatch) => {
-  dispatch({
+export const changeSearchString = (searchString: string) => ({
     type: FiltersActionTypes.CHANGE_SEARCH_STRING,
     data: searchString,
   })
-}
+
+export const changeTimeFilter = (filter: string) => ({
+  type: FiltersActionTypes.CHANGE_TIME_FILTER,
+  data: filter,
+})
 
 export interface IFilterChangeTypesAction {
   type: FiltersActionTypes.CHANGE_TYPE;
   data: string;
 }
 
-export interface IFilterToggleShowAllAction {
-  type: FiltersActionTypes.TOGGLE_SHOW_ALL;
-  data: boolean;
-}
-
-export interface IFilterToggleShowOpenedAction {
-  type: FiltersActionTypes.TOGGLE_SHOW_OPENED;
-  data: boolean;
+export interface IFilterChangeTimeFilterAction {
+  type: FiltersActionTypes.CHANGE_TIME_FILTER;
+  data: string;
 }
 
 export interface IFilterChangeSearchStringAction {
@@ -112,4 +94,4 @@ export interface IFilterChangeSearchStringAction {
   data: string;
 }
 
-export type FiltersActions = IFilterChangeTypesAction | IFilterToggleShowAllAction | IFilterChangeSearchStringAction | IFilterToggleShowOpenedAction;
+export type FiltersActions = IFilterChangeTypesAction  | IFilterChangeSearchStringAction | IFilterChangeTimeFilterAction;

@@ -6,20 +6,17 @@ import Typography from '@material-ui/core/Typography';
 import styles from './ExpanPanel.module.scss';
 import ThreeDRotation from '@material-ui/core/Icon';
 
-interface IProps {
+interface IExpanPanelProps {
   children: ReactNode;
   title: string;
 }
-interface IState {
+interface IExpanPanelState {
   expanded: boolean;
 }
 
-export class ExpanPanel extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      expanded: true
-    }
+export class ExpanPanel extends React.Component<IExpanPanelProps, IExpanPanelState> {
+  state = {
+    expanded: true
   }
   handleChange = (e: object, expanded: boolean): void => {
     this.setState({

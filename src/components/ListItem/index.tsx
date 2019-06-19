@@ -76,7 +76,7 @@ export class ListItem extends React.Component<IProps> {
                 </Grid>
                 <Grid item>
                   <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                    Remove
+                    Reserve
                   </Typography>
                 </Grid>
               </Grid>
